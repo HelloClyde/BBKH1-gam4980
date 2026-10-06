@@ -81,9 +81,9 @@ main/PR 自动构建并运行回归测试，`v*` 标签在验证通过后发布 
 
 感谢：**步步高电子词典游戏群**，群号 **830340878**。
 
-感谢 HelloClyde 的 [BBK9588-gam4980](https://github.com/HelloClyde/BBK9588-gam4980)
-提供 GAM4980/6502 核心与运行文件，感谢 [BBKH1-GBA](https://github.com/HelloClyde/BBKH1-GBA)
-提供文件选择器、中文触摸界面及原生框架参考，感谢 H1 SDK 作者 MrDefinition1999 和贡献者。
+感谢原引擎作者 **无云、iyzsong**。
+文件选择器、中文触摸界面及原生框架参考 [BBKH1-GBA](https://github.com/HelloClyde/BBKH1-GBA)。
+感谢 H1 SDK 作者 MrDefinition1999 和贡献者。
 感谢 Noto Sans CJK 项目提供中文字体。
 
 应用代码使用 GPL-3.0-or-later，SDK 使用 Apache-2.0，字体使用 OFL-1.1。
