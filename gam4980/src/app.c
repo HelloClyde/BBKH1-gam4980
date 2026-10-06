@@ -190,7 +190,7 @@ static const char *core_key_names[60]={"-","菜单","中英","英中","清除","
     "SHIFT","帮助","搜索","插入","修改","删除","退出","确认","9","0","O","P","L",
     "上","空格","左","下","右","上页","下页"};
 static unsigned shortcut_options(void){unsigned n=59-shortcut_page*24;return n<24?n:24;}
-static unsigned view_count(void){return view==1?6:view==3?4:view==4?5:view==5?3:view==6?6:view==7?shortcut_options()+3:26;}
+static unsigned view_count(void){return view==1?7:view==3?4:view==4?5:view==5?3:view==6?6:view==7?shortcut_options()+3:view==8?1:26;}
 static const char *shortcut_name(unsigned slot)
 {
     unsigned key=shortcuts.keys[slot];return key>0&&key<60?core_key_names[key]:"-";
@@ -272,10 +272,20 @@ static unsigned mapping_host(unsigned target)
 static void menu_screen(void)
 {
     rect(0,0,480,272,0x0843);
+    if(view==8) {
+        text("关于 GAM4980",18,8,0xffff);
+        text("版本 0.1.8",18,38,0xbdf7);
+        text("作者：HelloClyde",18,70,0xffff);
+        text("引擎作者：无云、iyzsong",18,102,0xffff);
+        text("感谢：步步高电子词典游戏群",18,166,0xffff);
+        text("群号：830340878",18,194,0xffff);
+        rect(18,234,444,32,0x04b0);text("返回菜单",198,239,0xffff);
+        present();return;
+    }
     text(view==1?(game_ended?"游戏已结束":"游戏已暂停"):view==3?"显示大小":view==4?"LCD 颜色":view==5?"按键设置":view==6?"底栏快捷键":view==7?"选择游戏按键":"功能键映射",18,8,0xffff);
     text(capture>=0?"请按实体键；返回或 ESC 取消":view>=3?"触摸选择，方向键／确认；返回菜单":"方向键选择，确认；返回设置",18,32,0xbdf7);
     if(view==1&&game_ended){char label[64];snprintf(label,sizeof label,"核心停止 PC=%04X；详情见日志",gam4980_shutdown_pc());rect(0,30,480,26,0x0843);text(label,18,32,0xbdf7);}
-    const char *root[]={game_ended?"重新开始":"继续游戏","显示大小","LCD 颜色","按键设置","更换游戏","退出应用"};
+    const char *root[]={game_ended?"重新开始":"继续游戏","显示大小","LCD 颜色","按键设置","更换游戏","退出应用","关于"};
     if(view==6) {
         for(unsigned i=0;i<6;++i) {
             int x=i<4?38:i==4?18:248,y=i<4?56+(int)i*34:202,w=i<4?404:214;
@@ -319,7 +329,8 @@ static void menu_screen(void)
     unsigned count=view_count();
     for(unsigned i=0;i<count;++i) {
         int x,y,w,h;
-        if(view==1||view==5){x=18+(i%2)*230;y=64+(i/2)*62;w=214;h=48;}
+        if(view==1&&i==6){x=18;y=242;w=444;h=26;}
+        else if(view==1||view==5){x=18+(i%2)*230;y=64+(i/2)*62;w=214;h=48;}
         else if(i<24){x=6+(i%6)*79;y=62+(i/6)*41;w=73;h=35;}
         else{x=6+(i-24)*236;y=234;w=230;h=32;}
         rect(x,y,w,h,(int)i==capture?0x9a20:i==cursor?0x04b0:0x2947);
@@ -329,7 +340,7 @@ static void menu_screen(void)
             char label[64];const char *name=root[i];
             if(i==1){snprintf(label,sizeof label,"显示大小：%s",scale_short_names[scale]);name=label;}
             if(i==2){snprintf(label,sizeof label,"LCD 颜色：%s",theme_short_names[theme]);name=label;}
-            text(name,x+5,y+7,0xffff);
+            text(name,x+5,y+(i==6?2:7),0xffff);
         }
         else if(i>=24)text(i==24?"恢复默认":"返回设置",x+5,y+6,0xffff);
         else {
@@ -345,7 +356,9 @@ static void open_menu(unsigned page)
 }
 static void activate(unsigned index)
 {
-    if(view==7) {
+    if(view==8) {
+        view=1;cursor=6;
+    } else if(view==7) {
         unsigned options=shortcut_options();
         if(index<options) {
             shortcuts.keys[shortcut_slot]=(uint8_t)(shortcut_page*24+index+1);shortcuts_save();view=6;cursor=shortcut_slot;
@@ -378,6 +391,7 @@ static void activate(unsigned index)
     case 3:view=5;cursor=0;break;
     case 4:action=1;break;
     case 5:action=2;break;
+    case 6:view=8;cursor=0;break;
     }
     redraw=1;
 }
@@ -399,7 +413,8 @@ static void key_press(unsigned key,unsigned source)
         key=h1_menu_direction(key);
         unsigned count=view_count(),cols=view==1||view==5?2:view==2||view==7?6:1;
         if(key==H1_KEY_BACK||key==H1_KEY_ESCAPE){
-            if(view==7){view=6;cursor=shortcut_slot;}
+            if(view==8){view=1;cursor=6;}
+            else if(view==7){view=6;cursor=shortcut_slot;}
             else if(view==6){view=5;cursor=1;}
             else if(view==5){view=1;cursor=3;}
             else if(view==2){mapping_save();view=5;cursor=0;}
@@ -434,6 +449,10 @@ static void poll_input(void)
             if(!view) {
                 if(y>=0&&y<240)open_menu(1);
                 else if(y>=240&&y<272&&x>=0&&x<480)game_key(shortcuts.keys[x/120],0,4);
+            } else if(view==8) {
+                if(x>=18&&x<462&&y>=234&&y<266)activate(0);
+            } else if(view==1&&x>=18&&x<462&&y>=242&&y<268) {
+                activate(6);
             } else if((view==1||view==5)&&y>=64) {
                 unsigned row=(y-64)/62,col=x>=248;
                 unsigned index=row*2+col;

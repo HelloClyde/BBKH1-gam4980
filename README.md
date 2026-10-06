@@ -25,7 +25,11 @@ A:\gam4980\E.BIN
 
 ## 截图
 
-以下为 H1 V1.41 完整固件模拟器中的真实运行截图，测试游戏为本项目的原创 GAM 测试程序。
+以下为 H1 V1.41 完整固件模拟器中的真实运行截图。游戏截图展示《伏魔记》，游戏文件需自行准备。
+
+| 《伏魔记》游戏画面 | 暂停菜单 | 关于 |
+| --- | --- | --- |
+| ![伏魔记游戏画面](gam4980/assets/fumo-gameplay.png) | ![暂停菜单](gam4980/assets/pause-menu.png) | ![关于](gam4980/assets/about.png) |
 
 | 暂停设置 | 显示大小 | LCD 颜色 |
 | --- | --- | --- |
@@ -71,7 +75,11 @@ main/PR 自动构建并运行回归测试，`v*` 标签在验证通过后发布 
 正式版和诊断版共享核心，但只有诊断版统计 TCU5 耗时分布。
 验证范围及确切 BDA 哈希见 [验证记录](docs/verification.md)；模拟器通过不代表所有真机或游戏均已验证。
 
-## 感谢与许可
+## 作者、感谢与许可
+
+作者：**HelloClyde**。引擎作者：**无云、iyzsong**。
+
+感谢：**步步高电子词典游戏群**，群号 **830340878**。
 
 感谢 HelloClyde 的 [BBK9588-gam4980](https://github.com/HelloClyde/BBK9588-gam4980)
 提供 GAM4980/6502 核心与运行文件，感谢 [BBKH1-GBA](https://github.com/HelloClyde/BBKH1-GBA)

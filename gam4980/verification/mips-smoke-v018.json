@@ -1,0 +1,42 @@
+{
+  "ok": true,
+  "bda_sha256": "6b430386dc01a6952f68306782e1af433f8948e79599c738c9d71622c639df85",
+  "kind": "actual MIPS BDA with mocked H1 tables; real 8/E ROMs and original GAM",
+  "seconds": [
+    5.42,
+    5.83,
+    5.3
+  ],
+  "frames": 12,
+  "assertions": [
+    "6502 boot",
+    "GAM execution",
+    "LCD output",
+    "physical Z input",
+    "CRC save/write/readback",
+    "save restore",
+    "corrupt latest slot fallback",
+    "GBK path",
+    "selector cancel",
+    "missing runtime ROM",
+    "invalid game",
+    "pause and game switch",
+    "function key mapping",
+    "per-game mapping restore",
+    "held Back alias does not repeat menu actions",
+    "release keys do not write NAND logs",
+    "keyboard and screen direction pairs send left/right and navigate settings",
+    "v1 default migration preserves custom bindings and CRC slots",
+    "v2 explicit direction-key remapping survives reload",
+    "left-triggered BRK preserves first PC and stops in the triggering frame",
+    "core stop stays in responsive menu; held left and Back cannot resume",
+    "core-stop restart bypasses selector without leaking resources",
+    "recent physical/core inputs buffered in RAM; flushed on stop",
+    "shortcut keyboard selection and per-game restore",
+    "shortcut configuration preserves physical mapping",
+    "three shortcut pages reach key 59",
+    "different game uses default shortcuts",
+    "host register preservation",
+    "no resource leaks"
+  ]
+}

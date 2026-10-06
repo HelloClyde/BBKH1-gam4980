@@ -1,0 +1,15 @@
+{
+  "environment": "complete H1 V1.41 firmware + QEMU; not physical H1",
+  "bda_sha256": "1485c90207dc9462e66f713be0275e0a14267d70240ae62a2919f6561109e051",
+  "checks": [
+    "game boot",
+    "keyboard selects About",
+    "About freezes core",
+    "Back and ESC return to root",
+    "confirm opens About",
+    "touch opens About and returns",
+    "resume advances core",
+    "normal exit"
+  ],
+  "passed": true
+}

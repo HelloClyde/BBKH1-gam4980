@@ -71,7 +71,7 @@ def main():
     report=validate_bda(dest)
     if not report['ok']:raise RuntimeError(report)
     sha=hashlib.sha256(data).hexdigest()
-    meta={'title':'GAM4980','version':'0.1.7','sha256':sha,'size':len(data),'sdk_commit':sdk_commit,
+    meta={'title':'GAM4980','version':'0.1.8','sha256':sha,'size':len(data),'sdk_commit':sdk_commit,
           'profile':args.profile,'profile_clock':'TCU5 RTC 32768 Hz; calibration; restore on pause/exit' if args.profile else None,
           'pacing':'RTC-calibrated firmware tick frequency; 60 Hz core; maximum 100 ms catch-up',
           'icon':{'path':'gam4980/assets/gam4980-icon.png','sha256':hashlib.sha256(icon.read_bytes()).hexdigest()},

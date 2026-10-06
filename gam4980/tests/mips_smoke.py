@@ -150,7 +150,7 @@ def main():
                 event=self.script.pop(0) if self.script else (-1,-1)
             self.word(code,event[0]);self.word(key,event[1]);return 0
     stopped=CoreStop(files=brk_files,events=[(9,40),(-1,-1),(10,40),(-1,-1),
-                         *presses(41),*presses(40),*presses(25)])
+                         *presses(41),*presses(40,40),*presses(25)])
     stopped.run();assert len(stopped.select_calls)==1,stopped.log()
     assert 'CORE_STOP pc=5060 frame=2' in stopped.log(),stopped.log()
     assert 'STOP frames=2 action=2 ended=1' in stopped.log(),stopped.log()
@@ -171,7 +171,7 @@ def main():
             else:return super().event(code,key,*args)
             self.word(code,event[0]);self.word(key,event[1]);return 0
     restarted=Restart(files=brk_files,events=[(10,40),(-1,-1),*presses(25)])
-    restarted.exit_script=[(10,40),(10,25),(-1,-1),*presses(40),*presses(25)]
+    restarted.exit_script=[(10,40),(10,25),(-1,-1),*presses(40,40),*presses(25)]
     restarted.run();assert restarted.gui_opens==2 and len(restarted.select_calls)==1
     assert restarted.log().count('CORE_STOP pc=5060 frame=2')==2,restarted.log()
     release=Machine(events=presses(16,41,35,27,27,25),bda=ROOT/'dist/H1GAM4980.bda')

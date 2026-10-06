@@ -3,6 +3,8 @@
 H1 应用、平台适配、构建工具和原创测试程序使用 GNU GPL version 3 or (at your option) any later version。
 Copyright (C) 2026 HelloClyde and contributors. 完整许可见 LICENSE。
 
+作者署名：HelloClyde。引擎作者：无云、iyzsong。感谢步步高电子词典游戏群（830340878）。
+
 - GAM4980/6502 核心取自 HelloClyde/BBK9588-gam4980，固定提交
   `73b884a056ca0595de1552e6e365138687fb25a1`，上游 GPLv3。
   `s6502.c` 和 `gam4980_core.h` 保持原样；帧调度新增 BRK 停止检查，兼容头改为 H1 所需类型。
@@ -32,3 +34,6 @@ Copyright (C) 2026 HelloClyde and contributors. 完整许可见 LICENSE。
 | E.BIN | `9d13aa4593d97b790afc37d73da8be985e7a3aa7f3dcfe6b91c798671067aa5e` |
 
 未包含商业 `.gam` 游戏、个人存档、完整 H1 固件/NAND、原机应用转储或工具链二进制。
+
+`gam4980/assets/fumo-gameplay.png` 展示《伏魔记》在本模拟器中的实际运行画面。
+其中游戏画面、人物和素材的权利仍归各自权利人，应用代码的 GPL 不为它们重新授权。

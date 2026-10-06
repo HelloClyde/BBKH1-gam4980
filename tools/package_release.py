@@ -17,7 +17,7 @@ def main():
         print('All downloaded asset checksums match');return
     for name in ['H1GAM4980','H1GAM4980-profile']:
         meta=json.loads((folder/(name+'.build.json')).read_text())
-        assert meta['version']=='0.1.7' and meta['test_frames']==0
+        assert meta['version']=='0.1.8' and meta['test_frames']==0
         assert hashlib.sha256((folder/(name+'.bda')).read_bytes()).hexdigest()==meta['sha256']
         for suffix in ['.bda','.build.json','.bda.sha256','-install.zip']:
             assert (folder/(name+suffix)).is_file()
