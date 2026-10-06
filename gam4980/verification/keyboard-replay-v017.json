@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "environment": "actual MIPS frontend key_press + 6502 core in Unicorn; not physical H1",
+  "game_sha256": "9939453cf48a916ad2c59f5da9ce9aeb11c43a0f12bea7b3b9462c20d126776c",
+  "cases": [
+    {
+      "version": "v016",
+      "bda_sha256": "fa1ae85540f406e7adf8a04f94da42765e71367268fd641ac0015145b39a81ce",
+      "state_before_key": "28c960e487187f9bccfbe46a362320d4993264a3c639e9d4b4dc5c19c34c363c",
+      "keyboard_left_core": 1,
+      "stop": {
+        "frame": 1898,
+        "pc": "0x261"
+      }
+    },
+    {
+      "version": "v017",
+      "bda_sha256": "3cff7ee95ade6385c37d7c7e5c897edaeba471ff4d0439c9f2c206e087fbd948",
+      "state_before_key": "28c960e487187f9bccfbe46a362320d4993264a3c639e9d4b4dc5c19c34c363c",
+      "keyboard_left_core": 55,
+      "stop": null
+    }
+  ]
+}

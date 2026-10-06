@@ -1,0 +1,11 @@
+{
+  "environment": "real-h1",
+  "source_log": "user-supplied h1gam.log",
+  "stopped_pc": "0261",
+  "physical_key": 26,
+  "sent_game_key": 1,
+  "expected_game_key": 55,
+  "root_cause": "Keyboard left was incorrectly mapped to menu; keyboard right was also incorrectly mapped to help.",
+  "game_crc32": "BE2877A5",
+  "source_log_sha256": "edba08a7c1cdfa51340a4ac2471eca446968d860e7d8a1617df30f3e59e6ed18"
+}

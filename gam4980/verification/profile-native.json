@@ -1,0 +1,40 @@
+{
+  "environment": "qemu",
+  "bda_sha256": "512bc9f8cc6018b1b938391fc4b57e451d8196ae501d1f36b0cc5ffabd0dfe83",
+  "before_tcu": {
+    "enabled": 0,
+    "stopped": 0,
+    "mask": 0,
+    "registers": [
+      10000,
+      10000,
+      0,
+      0
+    ]
+  },
+  "after_tcu": {
+    "enabled": 0,
+    "stopped": 0,
+    "mask": 0,
+    "registers": [
+      10000,
+      10000,
+      0,
+      0
+    ]
+  },
+  "fixture_frames": [
+    7,
+    489
+  ],
+  "fumojI_frames": [
+    10,
+    931
+  ],
+  "paused_frames": 936,
+  "long_menu_freezes_core": true,
+  "pause_resume_timer_restoration": true,
+  "game_switch": true,
+  "fumojI_replay": true,
+  "integer_scale_segment": true
+}

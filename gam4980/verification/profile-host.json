@@ -1,0 +1,21 @@
+{
+  "all_passed": true,
+  "tests": [
+    {
+      "test": "profile_clock",
+      "result": "PASS: TCU terminal plateau, flag-before-reset, inclusive wrap, boundary race, corrupt/stale reads, bounded failure, IRQ isolation, restore/resume"
+    },
+    {
+      "test": "profile_accounting",
+      "result": "PASS GAM exclusive costs, catch-up/empty ticks, video/input/save counters, 60 Hz budget, complete windows, pause/resume, long stalls and RTC fallback"
+    },
+    {
+      "test": "profile_physical_boundary",
+      "result": "PASS: physical terminal calibration, slow startup/resume excluded, exact exclusive costs, runtime stall rejected and exact restoration"
+    },
+    {
+      "test": "timing",
+      "result": "PASS RTC tick calibration: 40/60/80 Hz, phase uncertainty, raw wrap, caching, missing/stopped RTC, invalid rates and exact 60 Hz scheduling"
+    }
+  ]
+}

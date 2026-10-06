@@ -1,0 +1,21 @@
+{
+  "packages": [
+    {
+      "name": "H1GAM4980",
+      "version": "0.1.7",
+      "sha256": "3dcc4e983eb63cad6ce30e064b892c9ce438cca40fff69a3d2c7e57728da192d",
+      "size": 144880,
+      "package_ok": true
+    },
+    {
+      "name": "H1GAM4980-profile",
+      "version": "0.1.7",
+      "sha256": "3cff7ee95ade6385c37d7c7e5c897edaeba471ff4d0439c9f2c206e087fbd948",
+      "size": 155208,
+      "package_ok": true
+    }
+  ],
+  "commercial_games_included": false,
+  "s6502_and_core_header_unchanged": true,
+  "core_change": "Stop the frame scheduler at the first BRK and ignore subsequent step_frame calls."
+}

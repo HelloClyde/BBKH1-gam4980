@@ -1,0 +1,84 @@
+{
+  "environment": "QEMU complete H1 V1.41; not physical H1",
+  "bda_sha256": "3cff7ee95ade6385c37d7c7e5c897edaeba471ff4d0439c9f2c206e087fbd948",
+  "fixture_keys": [
+    [
+      26,
+      55,
+      183
+    ],
+    [
+      28,
+      57,
+      185
+    ],
+    [
+      40,
+      55,
+      183
+    ],
+    [
+      35,
+      57,
+      185
+    ],
+    [
+      27,
+      56,
+      184
+    ],
+    [
+      37,
+      53,
+      181
+    ]
+  ],
+  "keyboard_directions_navigate_menu": true,
+  "game_segments": [
+    {
+      "physical": 26,
+      "held": [
+        26
+      ],
+      "frames": [
+        742,
+        898
+      ],
+      "core_stopped": false
+    },
+    {
+      "physical": 28,
+      "held": [
+        28
+      ],
+      "frames": [
+        909,
+        1065
+      ],
+      "core_stopped": false
+    },
+    {
+      "physical": 40,
+      "held": [
+        40
+      ],
+      "frames": [
+        1075,
+        1231
+      ],
+      "core_stopped": false
+    },
+    {
+      "physical": 35,
+      "held": [
+        35
+      ],
+      "frames": [
+        1240,
+        1396
+      ],
+      "core_stopped": false
+    }
+  ],
+  "timer_restored_and_clean_exit": true
+}
