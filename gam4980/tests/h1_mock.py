@@ -37,6 +37,7 @@ class Machine:
         self.switched = False
         self.handles, self.callbacks, self.next_handle = {}, {}, 1
         self.gui_active = False
+        self.game_display_mode = False
         self.gui_opens = self.gui_closes = 0
         self.audio_initialized = set()
         self.audio_active = False
@@ -227,6 +228,7 @@ class Machine:
         assert self.gui_active
         self.capture_game_buffer()
         self.gui_active = False; self.gui_closes += 1
+        self.game_display_mode = False
         return 1
     def event(self, code, key, *a):
         if self.blits >= 1 and not self.injected:

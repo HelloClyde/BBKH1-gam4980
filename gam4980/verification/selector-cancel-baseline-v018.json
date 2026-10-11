@@ -1,0 +1,15 @@
+{
+  "environment": "complete H1 V1.41 firmware + QEMU; not physical H1",
+  "version": "0.1.8",
+  "bda_sha256": "1485c90207dc9462e66f713be0275e0a14267d70240ae62a2919f6561109e051",
+  "trigger": "Back cancels initial GAM file picker",
+  "application_log": [
+    "APP_BEGIN GAM4980 H1",
+    "SELECTOR_CALL_BEGIN",
+    "SELECTOR_CALL_END",
+    "APP_END"
+  ],
+  "desktop_page_down_frame_before": 76,
+  "desktop_page_down_frame_after": 76,
+  "desktop_redraw_suppressed_after_app_return": true
+}

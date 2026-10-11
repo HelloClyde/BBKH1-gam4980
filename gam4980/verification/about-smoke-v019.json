@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "kind": "actual release MIPS BDA with mocked H1 firmware calls",
+  "bda_sha256": "e4d20f210cec4e14dd068cb727d96e4381be33beef8f45ad30bf9555f83b88e1",
+  "checks": [
+    "About via physical keyboard",
+    "core frozen in About",
+    "Back/ESC/confirm return to pause menu",
+    "return to game and normal exit",
+    "one selector invocation",
+    "no resource leaks"
+  ]
+}

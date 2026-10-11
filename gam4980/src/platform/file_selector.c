@@ -1,6 +1,7 @@
 #include "h1_sdk.h"
 #include "file_selector.h"
 #include "diagnostics.h"
+#include "gui_context.h"
 #include <stdint.h>
 #include <string.h>
 
@@ -10,6 +11,21 @@
  * Kept project-local; exercised with the complete H1 V1.41 firmware.
  */
 typedef void (*h1_file_selector_fn)(const char *, const char *, char *);
+
+static int selector_complete(int result)
+{
+    if (result <= 0) {
+        /* V1.41 enters game display mode even when the picker is cancelled.
+         * Closing an unopened window does not restore desktop redraw. Pair
+         * open/close before returning to the launcher; no game is loaded. */
+        h1_diag("SELECTOR_EXIT_RESTORE_BEGIN status=%d", result);
+        int restored = gba_gui_open();
+        if (restored) gba_gui_close();
+        h1_diag("SELECTOR_EXIT_RESTORE_END restored=%d", restored);
+        if (!restored) return -1;
+    }
+    return result;
+}
 
 int h1_rom_path_valid(const char *path, size_t n)
 {
@@ -56,8 +72,8 @@ int h1_select_rom(const char *directory, char *path, size_t capacity)
     fn(directory, "gam", output);
     h1_diag("SELECTOR_CALL_END");
     for (n = 0; n < sizeof(output) && output[n]; ++n) {}
-    if (!n) return 0;
-    if (n == sizeof(output) || n >= capacity || !h1_rom_path_valid(output, n)) return -1;
+    if (!n) return selector_complete(0);
+    if (n == sizeof(output) || n >= capacity || !h1_rom_path_valid(output, n)) return selector_complete(-1);
     memcpy(path, output, n + 1);
     return 1;
 }

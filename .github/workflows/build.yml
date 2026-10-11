@@ -32,6 +32,7 @@ jobs:
       - run: python tools/build_gam4980.py
       - run: python tools/build_gam4980.py --profile
       - run: python gam4980/tests/distribution.py
+      - run: python gam4980/tests/selector_cancel.py
       - run: python tools/build_gam4980.py --test-frames 12
       - run: python gam4980/tests/mips_smoke.py
       - run: python gam4980/tests/about_smoke.py
@@ -59,5 +60,5 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
-          test "$RELEASE_TAG" = "v0.1.8"
-          gh release create "$RELEASE_TAG" dist/* --verify-tag --title "H1 GAM4980 $RELEASE_TAG" --notes-file docs/release-v0.1.8.md
+          test "$RELEASE_TAG" = "v0.1.9"
+          gh release create "$RELEASE_TAG" dist/* --verify-tag --title "H1 GAM4980 $RELEASE_TAG" --notes-file docs/release-v0.1.9.md

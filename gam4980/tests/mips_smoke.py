@@ -28,6 +28,7 @@ class Machine(base.Machine):
         super().__init__(bda,files=content,path=path)
     def select_file(self,directory,extension,output,*args):
         assert not self.gui_active
+        self.game_display_mode=True  # The real picker sets this even on cancel.
         entry=(self.string(directory),self.string(extension));self.select_calls.append(entry)
         assert entry[1]=='gam',entry
         path=self.selections.pop(0) if self.selections else None
@@ -48,6 +49,7 @@ class Machine(base.Machine):
         for i,reg in enumerate(self.saved_regs):assert self.uc.reg_read(reg)==0x12340000+i
         assert not self.allocations and not self.handles
         assert not self.gui_active and self.gui_opens==self.gui_closes
+        assert not self.game_display_mode, 'Selector left desktop redraw disabled'
         if not allow_dialog:assert not self.dialogs,(self.dialogs,self.log())
         return round(time.monotonic()-started,2)
     def log(self):return self.files['A:\\gam4980\\h1gam.log'].decode('gbk')
@@ -66,10 +68,13 @@ def main():
     broken=dict(second.files);bad=bytearray(broken[path+'.s1']);bad[-1]^=1;broken[path+'.s1']=bytes(bad)
     fallback=Machine(files=broken);seconds.append(fallback.run())
     assert 'save=1' in fallback.log() and fallback.files[path+'.s1'][28+0x8100]==0x5b
-    cancelled=Machine(path=None);cancelled.run();assert not cancelled.gui_opens
+    cancelled=Machine(path=None);cancelled.run()
+    assert cancelled.gui_opens==cancelled.gui_closes==1 and not cancelled.blits
+    assert 'SELECTOR_EXIT_RESTORE_END restored=1' in cancelled.log()
+    assert 'CORE_INIT_BEGIN' not in cancelled.log()
     missing=dict(first.files);del missing['A:\\gam4980\\8.BIN']
     failed=Machine(files=missing,selections=[path,None]);failed.run(allow_dialog=True)
-    assert failed.dialogs and failed.gui_opens==failed.gui_closes==1
+    assert failed.dialogs and failed.gui_opens==failed.gui_closes==2
     invalid=dict(first.files);invalid[path]=b'bad'
     rejected=Machine(files=invalid,selections=[path,None]);rejected.run(allow_dialog=True)
     assert rejected.dialogs

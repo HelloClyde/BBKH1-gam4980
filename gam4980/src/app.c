@@ -274,7 +274,7 @@ static void menu_screen(void)
     rect(0,0,480,272,0x0843);
     if(view==8) {
         text("关于 GAM4980",18,8,0xffff);
-        text("版本 0.1.8",18,38,0xbdf7);
+        text("版本 0.1.9",18,38,0xbdf7);
         text("作者：HelloClyde",18,70,0xffff);
         text("引擎作者：无云、iyzsong",18,102,0xffff);
         text("感谢：步步高电子词典游戏群",18,166,0xffff);

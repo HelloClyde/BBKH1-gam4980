@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "environment": "complete H1 V1.41 firmware + QEMU; not physical H1",
+  "bda_sha256": "e4d20f210cec4e14dd068cb727d96e4381be33beef8f45ad30bf9555f83b88e1",
+  "cancel_cases": [
+    "back",
+    "escape",
+    "touch_close",
+    "change_game_back"
+  ],
+  "desktop_redraw_and_relaunch_after_each_cancel": true,
+  "game_load_after_cancel": true,
+  "normal_exit_after_cancel": true
+}
